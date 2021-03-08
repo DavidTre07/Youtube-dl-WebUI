@@ -1,6 +1,7 @@
 # Youtube-dl-webui
 
 ## Build docker images
+
 ```bash
 cd docker/nginx
 docker build -t ydl-webui-nginx:latest .
@@ -9,6 +10,7 @@ docker build -t ydl-webui-php:latest .
 ```
 
 ## Example on how to use it with docker-compose
+
 ```yml
 version: "3"
 services:
