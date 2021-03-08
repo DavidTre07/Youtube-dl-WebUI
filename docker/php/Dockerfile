@@ -5,7 +5,7 @@ LABEL org.label-schema.url="https://github.com/hukoeth/Youtube-dl-WebUI" \
       org.label-schema.description="Youtube-dl-webui-php" \
       org.label-schema.docker.schema-version="1.0"
 
-RUN install_packages curl ca-certificates ffmpeg python \
+RUN install_packages curl ca-certificates ffmpeg python\
   && groupadd --gid 1001 ydl \
   && useradd --uid 1001 --gid ydl ydl
 

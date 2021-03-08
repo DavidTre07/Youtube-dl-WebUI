@@ -1,11 +1,26 @@
 # Youtube-dl-webui
 
+## Prepare webui
+
+- clone repo
+
+  ```bash
+  cd /data/ydl
+  git clone https://... www
+  ```
+
+- Adapt configuration
+
+  ```bash
+  cd www/config
+  cp config.sample.php config.php
+  vi config.php
+  ```
+
 ## Build docker images
 
 ```bash
-cd docker/nginx
-docker build -t ydl-webui-nginx:latest .
-cd docker/php
+cd www/docker/php
 docker build -t ydl-webui-php:latest .
 ```
 
@@ -15,13 +30,13 @@ docker build -t ydl-webui-php:latest .
 version: "3"
 services:
   ydl-nginx:
-    image: ydl-webui-nginx:latest
+    image: nginx
     container_name: ydl-nginx
     volumes:
       - /data/ydl/download:/download/:rw
       - /data/ydl/logs:/logs:rw
       - /etc/localtime:/etc/localtime:ro
-#      - /data/docker/config/ydl/www:/www:rw
+      - /data/ydl/www:/www:rw
     ports:
       - 80:80
     restart: always
@@ -32,6 +47,8 @@ services:
     volumes:
       - /data/ydl/download:/download:rw
       - /data/ydl/logs:/logs:rw
-#      - /data/docker/config/ydl/www:/www:rw
+      - /data/ydl/www:/www:rw
+    ports:
+      - 9000:9000
     restart: always
 ```
