@@ -17,6 +17,8 @@
   vi config.php
   ```
 
+  You can find an example of a working config.php in this folder
+
 ## Build docker images
 
 ```bash
